@@ -1,0 +1,7 @@
+{
+  "id": "agent-context",
+  "description": "Attach bounded snapshots of existing Paseo agent conversations",
+  "requirements": {
+    "paseo": ">=0.9.0"
+  }
+}
