@@ -2,7 +2,12 @@ import type { RpcInput, RpcOutput } from "@getpaseo/plugin";
 import type { PluginServerContext } from "@getpaseo/plugin/server";
 import { describe, expect, it } from "vitest";
 import contribute from "./index.server";
-import { searchAgentTranscriptsRpc } from "./shared/agent-context";
+import { agentTranscriptAttachments, searchAgentTranscriptsRpc } from "./shared/agent-context";
+
+it("opts the transcript source into cross-host attachment discovery", () => {
+  expect(agentTranscriptAttachments.crossHost).toBe(true);
+  expect(agentTranscriptAttachments.newAgentShortcut).toBe(true);
+});
 
 const MAX_EXPECTED_TRANSCRIPT_BYTES = 128 * 1024;
 interface TimelinePage {

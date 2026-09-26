@@ -12,13 +12,13 @@ paseo plugin add 508-dev/paseo-agent-context
 
 The source appears under the composer's `+` attachment menu. Paseo clients that support the New Agent shortcut also show **Attach agent transcript** next to **Import Session**. Opening the picker shows up to five recent agents; type to search by title, workspace, project, directory, provider, or ID. Select a result to attach its snapshot as a removable pill. The draft keeps the selected text after the source changes or disconnects.
 
-The plugin runs on the daemon that owns the source agents and searches that host only. Install it on each host whose agents you want to attach. It does not copy code, files, branches, terminals, permissions, or provider-native session state.
+The plugin runs on the daemon that owns the source agents and searches that host only. Install it on each host whose agents you want to attach. Clients supporting `crossHost` offer an installed source from another connected host in the destination composer's `+` menu, labeled with its host. They ask before searching the source host. The same-host New Agent shortcut is unchanged; remote sources stay in the `+` menu. No plugin installation is needed on the destination host. It does not copy code, files, branches, terminals, permissions, or provider-native session state.
 
 ## Snapshot and privacy
 
 The plugin reads retained agent timelines and produces snapshots **when the picker searches**, not at prompt submission. Selecting a result attaches the snapshot returned by that search. The response carries snapshot text to the Paseo app, which stores it with the draft and later sends it to the destination daemon as a prompt attachment. Do not use it for material you would not send to a model or store in a local draft.
 
-Paseo 0.9.1 accepts the snapshot as an ordinary text attachment through the `+` menu. The New Agent shortcut and dedicated `chat_history` ordering require a newer client that supports `newAgentShortcut` and `contextKind`. The plugin declares both fields now; older clients ignore them while retaining basic attachment behavior.
+Paseo 0.9.1 accepts the snapshot as an ordinary text attachment through the `+` menu. The New Agent shortcut, dedicated `chat_history` ordering, and cross-host source picker require newer clients that support `newAgentShortcut`, `contextKind`, and `crossHost`, respectively. The plugin declares all three fields now; older clients ignore unsupported fields while retaining basic same-host attachment behavior.
 
 Snapshots include user and assistant messages and fixed tool-kind markers. They omit reasoning, raw tool inputs and outputs, provider tool names, and subagent logs. Each snapshot is capped at 128 KiB, keeps recent context when older context exceeds the cap, and marks omitted context in the text. Search scans up to 1,000 agents and reads at most 5,000 timeline items per candidate result. Inactive retained sessions may be hydrated while reading their timelines; no new agent turn starts.
 
