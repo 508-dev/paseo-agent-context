@@ -18,5 +18,6 @@ export const agentTranscriptAttachments = defineAttachmentSource({
   pickerTitle: "Attach agent transcript",
   searchPlaceholder: "Search agents",
   newAgentShortcut: true,
+  crossHost: true,
   search: searchAgentTranscriptsRpc,
 });
