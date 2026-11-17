@@ -1,5 +1,7 @@
 # Agent Context for Paseo
 
+Development continues in [508-dev/paseo-plugins](https://github.com/508-dev/paseo-plugins/tree/main/plugins/agent-context). This repository remains installable for existing sources. Read the [migration guide](https://github.com/508-dev/paseo-plugins/blob/main/docs/migration.md) before switching an existing installation.
+
 A [Paseo](https://paseo.sh) plugin by [508.dev](https://508.dev) that attaches a bounded snapshot of an existing agent's conversation to a new prompt.
 
 ## Install
